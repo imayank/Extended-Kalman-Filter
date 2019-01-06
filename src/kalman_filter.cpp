@@ -2,8 +2,8 @@
 #define PI 3.14159265
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
-//using std::cout;
-//using std::endl;
+using std::cout;
+using std::endl;
 
 /* 
  * Please note that the Eigen library does not initialize 
