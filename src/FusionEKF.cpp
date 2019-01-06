@@ -38,23 +38,23 @@ FusionEKF::FusionEKF() {
    * TODO: Finish initializing the FusionEKF.
    * TODO: Set the process and measurement noises
    */
-   cout<<"Hlaser:"<<endl;
+   //cout<<"Hlaser:"<<endl;
    H_laser_ << 1,0,0,0,
 			   0,1,0,0;
-   cout<<"HJ:"<<endl;
+   //cout<<"HJ:"<<endl;
    Hj_  << 0,0,0,0,
            0,0,0,0,
 		   0,0,0,0;
 		   
    VectorXd	x = VectorXd(4);
    MatrixXd P = MatrixXd(4,4);
-   cout<<"P:"<<endl;
+   //cout<<"P:"<<endl;
    P << 1,0,0,0,
         0,1,0,0,
 		0,0,1000,0,
 		0,0,0,1000;
    MatrixXd F = MatrixXd(4,4);
-   cout<<"F:"<<endl;
+   //cout<<"F:"<<endl;
    F << 1,0,0,0,
         0,1,0,0,
 		0,0,1,0,
@@ -88,11 +88,11 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
      */
 
     // first measurement
-    cout << "EKF: " << endl;
+    //cout << "EKF: " << endl;
     ekf_.x_ = VectorXd(4);
     ekf_.x_ << 1, 1, 1, 1;
 	
-	cout << "entering the measurement decision tree"<<endl;
+	//cout << "entering the measurement decision tree"<<endl;
 
     if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
       // TODO: Convert radar from polar to cartesian coordinates 
@@ -116,20 +116,20 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     }
     else if (measurement_pack.sensor_type_ == MeasurementPackage::LASER) {
       // TODO: Initialize state.
-	  cout << "initializing state"<<endl;
+	  //cout << "initializing state"<<endl;
 	  ekf_.x_ << measurement_pack.raw_measurements_[0], 
               measurement_pack.raw_measurements_[1], 
               0, 
               0;
-	  cout<<"done initializing"<<endl;
+	  //cout<<"done initializing"<<endl;
 	  previous_timestamp_ = measurement_pack.timestamp_;
-	  cout << "LASER measurement done" << endl;
+	  //cout << "LASER measurement done" << endl;
 
     }
 
     // done initializing, no need to predict or update
     is_initialized_ = true;
-	cout <<"return"<<endl;
+	//cout <<"return"<<endl;
     return;
   }
 
@@ -188,6 +188,6 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   }
 
   // print the output
-  cout << "x_ = " << ekf_.x_ << endl;
-  cout << "P_ = " << ekf_.P_ << endl;
+  //cout << "x_ = " << ekf_.x_ << endl;
+  //cout << "P_ = " << ekf_.P_ << endl;
 }

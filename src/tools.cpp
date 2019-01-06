@@ -16,9 +16,9 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
   /**
    * TODO: Calculate the RMSE here.
    */
-   cout << "calculating size in rmse"<<endl;
+   //cout << "calculating size in rmse"<<endl;
   size_t N = estimations.size();
-  cout << "initializing rmse vector"<<endl;
+  //cout << "initializing rmse vector"<<endl;
   VectorXd rmse = VectorXd::Zero(4);
 
   // check the validity of the following inputs:
@@ -29,31 +29,31 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
     cout << "Invalid estimation or ground_truth data" << endl;
     return rmse;
   }
-   cout << "not invalid estimation" << endl;
+   //cout << "not invalid estimation" << endl;
   // accumulate squared residuals
   for (unsigned int i=0; i < estimations.size(); ++i) {
 	  
-	cout << "calculating residual"<<endl;
-	cout << "estimation: " << estimations[i]<<endl;
-	cout << "ground truth: " << ground_truth[i]<<endl;
+	//cout << "calculating residual"<<endl;
+	//cout << "estimation: " << estimations[i]<<endl;
+	//cout << "ground truth: " << ground_truth[i]<<endl;
 
     VectorXd residual = estimations[i] - ground_truth[i];
 	
-	cout << "residual calculated: " << residual <<endl;
+	//cout << "residual calculated: " << residual <<endl;
 
     // coefficient-wise multiplication
     residual = residual.array()*residual.array();
-	cout << "residual square done"<<endl;
+	//cout << "residual square done"<<endl;
     rmse = rmse + residual;
-	cout << "done" << endl;
+	//cout << "done" << endl;
   }
 
   // calculate the mean
-  cout << "calculate mean"<<endl;
+  //cout << "calculate mean"<<endl;
   rmse = rmse/estimations.size();
 
   // calculate the squared root
-  cout << "calculate sqrt"<<endl;
+  //cout << "calculate sqrt"<<endl;
   rmse = rmse.array().sqrt();
 
   // return the result
@@ -82,7 +82,7 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
     cout << "CalculateJacobian () - Error - Division by Zero" << endl;
     return H_jacobian;
   }
-   cout<<"Jacobian:"<<endl;
+   //cout<<"Jacobian:"<<endl;
    H_jacobian << px/rho, py/rho, 0, 0,
 		  -1*py/rho_squared, px/rho_squared, 0, 0,
 		  py*(vx*py-vy*px)/(rho_squared*rho),px*(vy*px-vx*py)/(rho_squared*rho),px/rho,py/rho;
