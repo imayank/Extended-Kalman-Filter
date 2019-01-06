@@ -19,7 +19,7 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
    cout << "calculating size in rmse"<<endl;
   size_t N = estimations.size();
   cout << "initializing rmse vector"<<endl;
-  VectorXd rmse = VectorXd::Zero(N);
+  VectorXd rmse = VectorXd::Zero(4);
 
   // check the validity of the following inputs:
   //  * the estimation vector size should not be zero
