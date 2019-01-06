@@ -58,7 +58,7 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
 	   phi = atan(x_(1)/x_(0)) % (2*PI);
    
    if (fabs(rho_squared) < 0.0001) {
-    cout << "UpdateEKF - Error - Division by Zero" << endl;
+    std::cout << "UpdateEKF - Error - Division by Zero" << std::endl;
     rho_dot = 0;
   }
   else
