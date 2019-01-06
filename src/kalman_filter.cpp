@@ -70,6 +70,7 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
 	  rho_dot = (x_(0)*x_(2) + x_(1)*x_(3))/sqrt(rho_squared);
   
   VectorXd z_pred = VectorXd(3);
+  cout<<"zpred:"<<endl;
   z_pred << sqrt(rho_squared),phi,rho_dot;
   
   VectorXd y = z - z_pred;

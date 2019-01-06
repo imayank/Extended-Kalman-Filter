@@ -70,7 +70,7 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
     cout << "CalculateJacobian () - Error - Division by Zero" << endl;
     return H_jacobian;
   }
-   
+   cout<<"Jacobian:"<<endl;
    H_jacobian << px/rho, py/rho, 0, 0,
 		  -1*py/rho_squared, px/rho_squared, 0, 0,
 		  py*(vx*py-vy*px)/(rho_squared*rho),px*(vy*px-vx*py)/(rho_squared*rho),px/rho,py/rho;
