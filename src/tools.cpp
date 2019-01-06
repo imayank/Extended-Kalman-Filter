@@ -44,7 +44,7 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
     // coefficient-wise multiplication
     residual = residual.array()*residual.array();
 	cout << "residual square done"<<endl;
-    rmse += residual;
+    rmse = rmse + residual;
 	cout << "done" << endl;
   }
 
