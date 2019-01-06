@@ -143,7 +143,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
    * TODO: Update the process noise covariance matrix.
    * Use noise_ax = 9 and noise_ay = 9 for your Q matrix.
    */
-  float dt = (measurement_pack.timestamp_ - previous_timestamp_)/1000.0;
+  float dt = (measurement_pack.timestamp_ - previous_timestamp_)/1000000.0;
   if(dt == 0)
 	  cout << "dt is ZERO: "<< dt << endl;
   cout << "dt: " << dt << endl;
