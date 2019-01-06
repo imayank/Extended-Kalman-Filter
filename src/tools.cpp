@@ -16,7 +16,9 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
   /**
    * TODO: Calculate the RMSE here.
    */
+   cout << "calculating size in rmse"<<endl;
   size_t N = estimations.size();
+  cout << "initializing rmse vector"<<endl;
   VectorXd rmse = VectorXd::Zero(N);
 
   // check the validity of the following inputs:
@@ -27,7 +29,7 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
     cout << "Invalid estimation or ground_truth data" << endl;
     return rmse;
   }
-
+   cout << "not invalid estimation" << endl;
   // accumulate squared residuals
   for (unsigned int i=0; i < estimations.size(); ++i) {
 
@@ -39,9 +41,11 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
   }
 
   // calculate the mean
+  cout << "calculate mean"<<endl;
   rmse = rmse/estimations.size();
 
   // calculate the squared root
+  cout << "calculate sqrt"<<endl;
   rmse = rmse.array().sqrt();
 
   // return the result

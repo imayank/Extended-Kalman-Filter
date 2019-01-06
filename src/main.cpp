@@ -92,6 +92,7 @@ int main() {
             iss >> timestamp;
             meas_package.timestamp_ = timestamp;
           }
+		  cout << " measurement done"<<endl;
 
           float x_gt;
           float y_gt;
@@ -107,13 +108,16 @@ int main() {
           gt_values(1) = y_gt; 
           gt_values(2) = vx_gt;
           gt_values(3) = vy_gt;
-          ground_truth.push_back(gt_values);
+          ground_truth.push_back(gt_values
+		  
+		  cout << "process measurement start:"<<endl;
           
           // Call ProcessMeasurement(meas_package) for Kalman filter
           fusionEKF.ProcessMeasurement(meas_package);       
 
           // Push the current estimated x,y positon from the Kalman filter's 
           //   state vector
+		  cout << "ProcessMeasurement call completed"<<endl;
 
           VectorXd estimate(4);
 
@@ -128,6 +132,8 @@ int main() {
           estimate(3) = v2;
         
           estimations.push_back(estimate);
+		  
+		  cout << "starting rmse calculation"<<endl;
 
           VectorXd RMSE = tools.CalculateRMSE(estimations, ground_truth);
 		  cout << "RMSE: " << RMSE <<endl;

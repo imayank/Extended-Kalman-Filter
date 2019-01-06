@@ -91,13 +91,15 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     cout << "EKF: " << endl;
     ekf_.x_ = VectorXd(4);
     ekf_.x_ << 1, 1, 1, 1;
+	
+	cout << "entering the measurement decision tree"<<endl;
 
     if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
       // TODO: Convert radar from polar to cartesian coordinates 
       //         and initialize state.
 	  float rho = measurement_pack.raw_measurements_[0];
 	  float phi = measurement_pack.raw_measurements_[1];
-	  float rho_dot = measurement_pack.raw_measurements_[2];
+	  //float rho_dot = measurement_pack.raw_measurements_[2];
 	  //VectorXd velocity(2);
 	  //VectorXd rho_vector(2);
 	  
@@ -109,21 +111,25 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
               0, 
               0;
 	  previous_timestamp_ = measurement_pack.timestamp_;
-	  
+	  cout << "RADAR measurement completed"<<endl;
 
     }
     else if (measurement_pack.sensor_type_ == MeasurementPackage::LASER) {
       // TODO: Initialize state.
+	  cout << "initializing state"<<endl;
 	  ekf_.x_ << measurement_pack.raw_measurements_[0], 
               measurement_pack.raw_measurements_[1], 
               0, 
               0;
+	  cout<<"done initializing"<<endl;
 	  previous_timestamp_ = measurement_pack.timestamp_;
+	  cout << "LASER measurement done" << endl;
 
     }
 
     // done initializing, no need to predict or update
     is_initialized_ = true;
+	cout <<"return"<<endl;
     return;
   }
 
