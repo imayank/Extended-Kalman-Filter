@@ -2,6 +2,8 @@
 #define PI 3.14159265
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
+using std::cout;
+using std::endl;
 
 /* 
  * Please note that the Eigen library does not initialize 
@@ -27,7 +29,7 @@ void KalmanFilter::Predict() {
    * TODO: predict the state
    */
    x_ = F_ * x_;
-   P_ = F_ * P * (F_.traspose()) + Q_;
+   P_ = F_ * P_ * (F_.transpose()) + Q_;
 }
 
 void KalmanFilter::Update(const VectorXd &z) {
@@ -55,10 +57,12 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
    if(x_(0) == 0)
 	   phi = PI/2;
    else
-	   phi = atan(x_(1)/x_(0)) % (2*PI);
+	   phi = atan(x_(1)/x_(0));
+       while(phi < -PI || phi > PI)
+		   phi+=(2*PI)
    
    if (fabs(rho_squared) < 0.0001) {
-    std::cout << "UpdateEKF - Error - Division by Zero" << std::endl;
+    cout << "UpdateEKF - Error - Division by Zero" << endl;
     rho_dot = 0;
   }
   else
