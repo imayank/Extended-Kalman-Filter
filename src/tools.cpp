@@ -4,6 +4,8 @@
 using Eigen::VectorXd;
 using Eigen::MatrixXd;
 using std::vector;
+using std::cout;
+using std::endl;
 
 Tools::Tools() {}
 
@@ -14,7 +16,7 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
   /**
    * TODO: Calculate the RMSE here.
    */
-  size_t N = estimations.size()
+  size_t N = estimations.size();
   VectorXd rmse = VectorXd::Zero(N);
 
   // check the validity of the following inputs:
