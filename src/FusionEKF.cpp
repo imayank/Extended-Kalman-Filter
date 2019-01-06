@@ -145,7 +145,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
    */
   float dt = (measurement_pack.timestamp_ - previous_timestamp_);
   if(dt == 0)
-	  cout << "dt is ZERO" << endl;
+	  cout << "dt is ZERO: "<< dt << endl;
   float dt_square = dt*dt;
   float dt_cube = dt_square * dt;
   float dt_quad = dt_cube *dt;
