@@ -88,6 +88,8 @@ int main() {
             iss >> ro;
             iss >> theta;
             iss >> ro_dot;
+			if(theta > 3.14)
+				cout << "GREATER: "<< endl;
             meas_package.raw_measurements_ << ro,theta, ro_dot;
             iss >> timestamp;
             meas_package.timestamp_ = timestamp;
