@@ -51,8 +51,8 @@ FusionEKF::FusionEKF() {
    //cout<<"P:"<<endl;
    P << 1,0,0,0,
         0,1,0,0,
-		0,0,1000,0,
-		0,0,0,1000;
+		0,0,100,0,
+		0,0,0,100;
    MatrixXd F = MatrixXd(4,4);
    //cout<<"F:"<<endl;
    F << 1,0,0,0,
