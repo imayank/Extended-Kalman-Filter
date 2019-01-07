@@ -79,7 +79,14 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
 	  z_meas(1)+= (2*PI);
   while(z_meas(1) > PI)
 	  z_meas(1)-= (2*PI);*/
-  z_meas(1) = fmod(z_meas(1),2*PI);
+  float d = fmod(z_meas(1),2*PI);
+  
+  if(d > PI)
+	  z_meas(1) = d - (2*PI);
+  else{
+	  if(d < -PI)
+		  z_meas(1) = d + (2*PI);
+  }
   
   VectorXd y = z_meas - z_pred;
   MatrixXd S = H_ * P_ * (H_.transpose()) + R_;
